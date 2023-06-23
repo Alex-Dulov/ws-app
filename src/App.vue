@@ -1,15 +1,18 @@
 <template>
   <Header :language="settings[0].currentLanguage.label" />
-<!--
+  <!--
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">
+    Launch modal
+  </button>
+  -->
   <div
-    class="modal fade show"
+    class="modal fade"
     id="aboutModal"
     data-bs-backdrop="static"
     data-bs-keyboard="true"
     tabindex="-1"
     aria-labelledby="aboutModalLabel"
-    aria-hidden="false"
-    style="display: block"
+    aria-hidden="true"
   >
     <div class="modal-dialog">
       <div class="modal-content">
@@ -36,7 +39,6 @@
       </div>
     </div>
   </div>
-  -->
   <section class="content mb-4">
     <div class="container mb-4">
       <ul class="nav nav-tabs" id="mainMenu" role="tablist">
@@ -490,6 +492,10 @@ export default defineComponent({
     ws.onmessage = (rawMessage) => {
       this.receivingMessage(JSON.parse(rawMessage.data));
     };
+
+    // открытие модального окна при загрузке страницы
+    // const aboutModal = new bootstrap.Modal('#aboutModal', {});
+    // aboutModal.show();
   },
 });
 </script>
