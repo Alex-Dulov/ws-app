@@ -4,7 +4,9 @@ simple chat
 -----------------------------------------------------------------
 Установка
 -----------------------------------------------------------------
-git clone ...  
+mkdir ws-app  
+cd ws-app  
+git clone https://github.com/Alex-Dulov/ws-app.git .  
 nvm use 14.20.1  
 yarn  
 yarn start  
