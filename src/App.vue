@@ -1,44 +1,9 @@
 <template>
   <Header :language="settings[0].currentLanguage.label" />
-  <!--
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">
+<!--  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">
     Launch modal
-  </button>
-  -->
-  <div
-    class="modal fade"
-    id="aboutModal"
-    data-bs-backdrop="static"
-    data-bs-keyboard="true"
-    tabindex="-1"
-    aria-labelledby="aboutModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="aboutModalLabel">What Your name?</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <input class="mb-3" type="text" placeholder="Name" />
-          <textarea placeholder="About" />
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Ok
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  </button>-->
+  <AboutModal :aboutModalShow="aboutModalShow"/>
   <section class="content mb-4">
     <div class="container mb-4">
       <ul class="nav nav-tabs" id="mainMenu" role="tablist">
@@ -313,6 +278,7 @@ import Footer from "@/components/Footer.vue";
 import About from "@/views/About.vue";
 import Users from "@/views/Users.vue";
 import News from "@/views/News.vue";
+import AboutModal from "@/components/About-modal.vue";
 import Settings from "@/views/Settings.vue";
 
 const ws = new WebSocket("ws://127.0.0.1:8000");
@@ -326,9 +292,11 @@ export default defineComponent({
     About,
     Header,
     Footer,
+    AboutModal,
   },
   data() {
     return {
+      aboutModal: true,
       language: "ru",
       languageModel: "",
       settings: [
@@ -433,10 +401,6 @@ export default defineComponent({
     ws.onmessage = (rawMessage) => {
       this.receivingMessage(JSON.parse(rawMessage.data));
     };
-
-    // открытие модального окна при загрузке страницы
-    // const aboutModal = new bootstrap.Modal('#aboutModal', {});
-    // aboutModal.show();
   },
 });
 </script>
