@@ -272,7 +272,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, getCurrentInstance } from "vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import About from "@/views/About.vue";
@@ -282,6 +282,11 @@ import AboutModal from "@/components/About-modal.vue";
 import Settings from "@/views/Settings.vue";
 
 const ws = new WebSocket("ws://127.0.0.1:8000");
+const instance = getCurrentInstance();
+
+instance?.proxy?.$Bus.on('on-num', (num) => {
+  console.log(num,'===========>B')
+});
 
 export default defineComponent({
   name: "Home",
@@ -296,7 +301,7 @@ export default defineComponent({
   },
   data() {
     return {
-      aboutModal: true,
+      aboutModalShow: true,
       language: "ru",
       languageModel: "",
       settings: [

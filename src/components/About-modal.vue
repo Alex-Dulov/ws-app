@@ -38,8 +38,10 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, getCurrentInstance } from "vue";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.js";
+
+const instance = getCurrentInstance();
 
 export default defineComponent({
   name: "aboutModal",
@@ -51,13 +53,15 @@ export default defineComponent({
   },
   methods: {
     setUserName() {
-      console.log(this.userName);
+      instance?.proxy?.$Bus.emit('on-num', 100)
     },
   },
   mounted() {
-    // открытие модального окна при загрузке страницы
-    const aboutModal = new bootstrap.Modal('#aboutModal', {});
-    aboutModal.show();
+    if (this.aboutModalShow) {
+      // открытие модального окна при загрузке страницы
+      const aboutModal = new bootstrap.Modal('#aboutModal', {});
+      aboutModal.show();
+    }
   },
 });
 </script>
