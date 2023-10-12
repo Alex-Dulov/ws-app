@@ -152,27 +152,7 @@
         role="tabpanel"
         aria-labelledby="about-tab"
       >
-        <div class="about">
-          <div class="container p-4 rounded-2 bg-info bg-opacity-10">
-            <h2 class="mb-4">Что за Фричат?</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
-              eaque impedit quo modi illo exercitationem sequi dolorum totam
-              tenetur, consequuntur tempore reiciendis, fugiat aspernatur saepe
-              delectus repellat debitis itaque temporibus quaerat velit.
-              Accusantium, tenetur sapiente!
-            </p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam
-              vitae numquam et.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
-              eaque impedit quo modi illo exercitationem sequi dolorum totam
-              tenetur, consequuntur tempore reiciendis, fugiat aspernatur.
-            </p>
-          </div>
-        </div>
+        <About />
       </div>
       <div
         class="tab-pane fade show active"
@@ -180,35 +160,7 @@
         role="tabpanel"
         aria-labelledby="news-tab"
       >
-        <div class="news">
-          <div
-            class="alert alert-info alert-dismissible container p-4 rounded-2 bg-primary mb-4 text-white"
-          >
-            <button
-              class="btn-close"
-              type="button"
-              data-bs-dismiss="alert"
-              aria-label="Close"
-            ></button>
-            <h3>Lorem, ipsum dolor</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-              ex a officiis est possimus, porro illo sint, ipsam odio, debitis
-              adipisci.
-            </p>
-          </div>
-          <div
-            class="chat__wrapper"
-            v-for="(post, index) in posts"
-            :key="index"
-          >
-            <div class="container p-4 rounded-2 bg-info bg-opacity-10 mb-4">
-              <p>{{ post.userId }}</p>
-              <p>{{ post.name }}</p>
-              <p>{{ post.message }}</p>
-            </div>
-          </div>
-        </div>
+        <News :langugage="language" :posts="posts"/>
       </div>
       <div
         class="tab-pane fade"
@@ -216,11 +168,7 @@
         role="tabpanel"
         aria-labelledby="users-tab"
       >
-        <div class="users">
-          <div class="container p-4 rounded-2 bg-info bg-opacity-10">
-            <div class="row"></div>
-          </div>
-        </div>
+        <Users />
       </div>
       <div
         class="tab-pane fade"
@@ -333,6 +281,15 @@
                 </form>
               </div>
             </div>
+            <div class="row">
+              <div class="chat__wrapper" v-for="(post, index) in posts" :key="index">
+                <div class="container p-4 rounded-2 bg-info bg-opacity-10 mb-4" v-if="post.userId === userId">
+                  <p>{{ post.userId }}</p>
+                  <p>{{ post.name }}</p>
+                  <p>{{ post.message }}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -342,31 +299,7 @@
         role="tabpanel"
         aria-labelledby="settings-tab"
       >
-        <div class="settings">
-          <div class="container p-4 rounded-2 bg-info bg-opacity-10">
-            <div class="row mb-4">
-              <div class="col-md-7 fw-bold" v-if="language === 'en'">
-                Language
-              </div>
-              <div class="col-md-7 fw-bold" v-if="language === 'ru'">Язык</div>
-              <div class="col-md-5">
-                <select
-                  class="form-select js-select"
-                  aria-label="Change language"
-                  v-model="languageModel"
-                >
-                  <option
-                    v-for="(item, index) in settings[0]._languages"
-                    :value="item.label"
-                    :key="index"
-                  >
-                    {{ item.name }}
-                  </option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Settings :settings="settings" :language="language" @setLanguage="setLanguage"/>
       </div>
     </div>
   </section>
@@ -377,12 +310,20 @@
 import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import About from "@/views/About.vue";
+import Users from "@/views/Users.vue";
+import News from "@/views/News.vue";
+import Settings from "@/views/Settings.vue";
 
 const ws = new WebSocket("ws://127.0.0.1:8000");
 
 export default defineComponent({
   name: "Home",
   components: {
+    Settings,
+    News,
+    Users,
+    About,
     Header,
     Footer,
   },
