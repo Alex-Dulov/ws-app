@@ -39,7 +39,6 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import bootstrap from "bootstrap/dist/js/bootstrap.bundle.js";
 
 export default defineComponent({
   name: "aboutModal",
@@ -58,7 +57,7 @@ export default defineComponent({
   mounted() {
     if (this.aboutModalShow) {
       // открытие модального окна при загрузке страницы
-      const aboutModal = new bootstrap.Modal("#aboutModal", {});
+      const aboutModal = new this.bootstrap.Modal("#aboutModal", {});
       aboutModal.show();
     }
   },
