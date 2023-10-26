@@ -374,9 +374,9 @@ export default defineComponent({
     },
   },
   created() {
-    this.$emitter.on("setName", (e) => {
-      console.log("--->", e);
-    });
+    // this.$emitter.on("setName", (e) => {
+    //   console.log("--->", e);
+    // });
   },
   mounted() {
     if (!localStorage.getItem("language")) {

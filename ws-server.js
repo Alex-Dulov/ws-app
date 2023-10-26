@@ -15,11 +15,17 @@ wsServer.on("connection", (ws) => {
   console.log(`New user id: ${id}`);
 
   ws.on("message", (rawMessage) => {
-    console.log("");
+    console.log();
   });
 
   ws.on("close", () => {
     delete users[id];
     console.log(`User ${id} is closed`);
   });
+
+  // ws.clients.forEach(function each(client) {
+  //   if (client.onclient === users[id]) {
+  //     console.log(client);
+  //   }
+  // });
 });
