@@ -53,7 +53,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "Chat",
   props: ["settings", "language", "sentMessage"],
-  // emits: ["sentMessage"],
+  emits: ["sentMessage"],
   data() {
     return {
       message: "",

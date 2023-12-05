@@ -374,7 +374,7 @@ export default defineComponent({
     },
   },
   created() {
-    this.$emitter.on("setName", (e) => {
+    this.emitter.on("setName", (e: any) => {
       console.log("--->", e);
     });
   },
