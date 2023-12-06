@@ -135,6 +135,7 @@
       >
         <Users />
       </div>
+
       <div
         class="tab-pane fade"
         id="chat"
@@ -194,6 +195,7 @@
           </form>
         </div>
       </div>
+
       <div
         class="tab-pane fade"
         id="profile"
@@ -272,7 +274,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, inject } from "vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import About from "@/views/About.vue";
@@ -293,6 +295,12 @@ export default defineComponent({
     Header,
     Footer,
     AboutModal,
+  },
+  setup() {
+    const emitter = inject('emitter');
+    return {
+      emitter
+    }
   },
   data() {
     return {
@@ -374,8 +382,8 @@ export default defineComponent({
     },
   },
   created() {
-    this.emitter.on("setName", (e: any) => {
-      console.log("--->", e);
+    this.emitter.on("sentMessage", (e: any) => {
+      console.log("5555 --->", e);
     });
   },
   mounted() {

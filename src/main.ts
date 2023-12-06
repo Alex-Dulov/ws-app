@@ -18,7 +18,12 @@ const app = createApp(App).use(router);
 const store = new Vuex.Store({state: {test: "",},
 });
 
-app.use(store);
-app.config.globalProperties.emitter = emitter;
-app.mount('#app');
+// app.use(store);
+// app.config.globalProperties.emitter = emitter;
+// app.mount('#app');
+
+
+app.use(store)
+.provide('emitter', emitter)
+.mount('#app');
 

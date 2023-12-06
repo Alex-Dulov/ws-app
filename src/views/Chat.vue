@@ -53,7 +53,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "Chat",
   props: ["settings", "language", "sentMessage"],
-  emits: ["sentMessage"],
+  // emits: ["sentMessage"],
   data() {
     return {
       message: "",
@@ -62,13 +62,18 @@ export default defineComponent({
   },
   methods: {
     onSubmit: function (event: Event, message: string) {
+      console.log("submit");
       if (message) {
-        // this.$emit("update:sentMessage", message);
+        this.emitter.emit("sentMessage", {message: message});
+        // this.emitter("update:sentMessage", message);
         // очистка формы, после отправки сообщения
         this.message = "";
       }
       return false;
     },
+  },
+  mounted() {
+    console.log("mount chat component")
   },
 });
 </script>

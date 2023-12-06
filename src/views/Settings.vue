@@ -20,21 +20,36 @@
           </select>
         </div>
       </div>
+      <button class="button" @click="onClick">
+        Click
+      </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, inject } from "vue";
 
 export default defineComponent({
   name: "Settings",
   props: ["settings", "language"],
   emits: ["setLanguage"],
+  setup() {
+    const emitter = inject('emitter');
+    return {
+      emitter
+    }
+  },
   data() {
     return {
       languageModel: this.language,
     };
+  },
+  methods: {
+    onClick() {
+      console.log("onClick");
+      this.emitter.emit("sentMessage", {message: "123 --> message"});
+    },
   },
   mounted() {
     this.settings[0]._languages.forEach(
