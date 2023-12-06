@@ -19,7 +19,6 @@ const store = new Vuex.Store({state: {test: "",},
 });
 
 app.use(store);
-// app.config.globalProperties.$emitter = mitt();
 app.config.globalProperties.emitter = emitter;
 app.mount('#app');
 
