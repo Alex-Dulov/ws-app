@@ -58,8 +58,8 @@ export default defineComponent({
   mounted() {
     if (this.aboutModalShow) {
       // открытие модального окна при загрузке страницы
-      // const aboutModal = new bootstrap.Modal("#aboutModal", {});
-      // aboutModal.show();
+      const aboutModal = new bootstrap.Modal("#aboutModal", {});
+      aboutModal.show();
     }
   },
 });
