@@ -296,12 +296,6 @@ export default defineComponent({
     Footer,
     AboutModal,
   },
-  setup() {
-    const emitter = inject('emitter');
-    return {
-      emitter
-    }
-  },
   data() {
     return {
       aboutModalShow: true,
@@ -382,9 +376,10 @@ export default defineComponent({
     },
   },
   created() {
-    this.emitter.on("sentMessage", (e: any) => {
-      console.log("5555 --->", e);
-    });
+    console.log(this)
+    // this.$emit.on("sentMessage", e: any) => {
+    //   console.log("5555 --->", e);
+    // });
   },
   mounted() {
     if (!localStorage.getItem("language")) {

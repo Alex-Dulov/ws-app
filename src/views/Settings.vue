@@ -28,18 +28,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from "vue";
+import { defineComponent} from "vue";
+// import mitt, { Emitter } from 'mitt';
+
+
+// type Events = {
+//   sentMessage: any;
+// };
+
+// const emitter: Emitter<Events> = mitt<Events>();
 
 export default defineComponent({
   name: "Settings",
   props: ["settings", "language"],
   emits: ["setLanguage"],
-  setup() {
-    const emitter = inject('emitter');
-    return {
-      emitter
-    }
-  },
   data() {
     return {
       languageModel: this.language,
@@ -48,7 +50,7 @@ export default defineComponent({
   methods: {
     onClick() {
       console.log("onClick");
-      this.emitter.emit("sentMessage", {message: "123 --> message"});
+      // this.emitter.emit("sentMessage", {message: "123 --> message"});
     },
   },
   mounted() {

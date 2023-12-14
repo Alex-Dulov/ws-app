@@ -64,7 +64,7 @@ export default defineComponent({
     onSubmit: function (event: Event, message: string) {
       console.log("submit");
       if (message) {
-        this.emitter.emit("sentMessage", {message: message});
+        // this.emitter.emit("sentMessage", {message: message});
         // this.emitter("update:sentMessage", message);
         // очистка формы, после отправки сообщения
         this.message = "";
