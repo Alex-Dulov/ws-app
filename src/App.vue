@@ -274,7 +274,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from "vue";
+import { defineComponent, ref, onMounted, onUnmounted } from "vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import About from "@/views/About.vue";
@@ -282,6 +282,7 @@ import Users from "@/views/Users.vue";
 import News from "@/views/News.vue";
 import AboutModal from "@/components/About-modal.vue";
 import Settings from "@/views/Settings.vue";
+import { emitter } from "./main";
 
 const ws = new WebSocket("ws://127.0.0.1:8000");
 
@@ -334,13 +335,13 @@ export default defineComponent({
       localStorage.setItem("language", this.settings[0].currentLanguage.label);
     },
     receivingMessage: function (messageData: any) {
-      console.log("receivingMessage:", messageData);
+      // console.log("receivingMessage:", messageData);
       // let message = JSON.parse(messageData);
 
       // получение id
       if (!this.userId && messageData[0].type === "user") {
         this.userId = messageData[1].userId;
-        console.log("userId:", this.userId);
+        // console.log("userId:", this.userId);
       }
 
       // получение сообщения
@@ -376,12 +377,12 @@ export default defineComponent({
     },
   },
   created() {
-    console.log(this)
-    // this.$emit.on("sentMessage", e: any) => {
-    //   console.log("5555 --->", e);
-    // });
+    emitter.on("sentMessage", (e: any) => {
+      console.log("5555 --->", e);
+    });
   },
   mounted() {
+    console.log("this", this);
     if (!localStorage.getItem("language")) {
       // Установка языка если нет записи в localStorage
       this.setLanguage({

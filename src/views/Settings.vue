@@ -20,7 +20,7 @@
           </select>
         </div>
       </div>
-      <button class="button" @click="onClick">
+      <button class="button" @click="emitEvent">
         Click
       </button>
     </div>
@@ -28,29 +28,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent} from "vue";
-// import mitt, { Emitter } from 'mitt';
-
-
-// type Events = {
-//   sentMessage: any;
-// };
-
-// const emitter: Emitter<Events> = mitt<Events>();
+import { defineComponent } from "vue";
+import { emitter } from "../main";
 
 export default defineComponent({
   name: "Settings",
   props: ["settings", "language"],
-  emits: ["setLanguage"],
+  // emits: ["setLanguage"],
   data() {
     return {
       languageModel: this.language,
     };
   },
   methods: {
-    onClick() {
-      console.log("onClick");
-      // this.emitter.emit("sentMessage", {message: "123 --> message"});
+    emitEvent() {
+      emitter.emit("sentMessage", {message: "123 --> message"});
     },
   },
   mounted() {

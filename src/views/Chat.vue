@@ -62,7 +62,7 @@ export default defineComponent({
   },
   methods: {
     onSubmit: function (event: Event, message: string) {
-      console.log("submit");
+      // console.log("submit");
       if (message) {
         // this.emitter.emit("sentMessage", {message: message});
         // this.emitter("update:sentMessage", message);
