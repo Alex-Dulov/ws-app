@@ -202,63 +202,7 @@
         role="tabpanel"
         aria-labelledby="profile-tab"
       >
-        <div class="profile">
-          <div class="container p-4 rounded-2 bg-info bg-opacity-10">
-            <div class="row">
-              <div class="col-md-3">
-                <img
-                  class="w-100 mb-4"
-                  src="./assets/default-user.png"
-                  alt="Аватар пользователя"
-                />
-              </div>
-              <div class="col-md-9">
-                <div class="fs-7">nickname</div>
-                <p class="display-6 fw-bold">Username</p>
-                <div class="fs-7">user id</div>
-                <p>867586587658</p>
-                <div class="fs-7">about me</div>
-                <p class="mb-4">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius
-                  dignissimos, reiciendis illum maxime est quisquam.
-                </p>
-
-                <form
-                  class="container mb-3 js-chat-form"
-                  id="chatForm"
-                  @submit.prevent="onSubmit($event, sentMessage, 'post')"
-                >
-                  <textarea
-                    class="form-control mb-3"
-                    id="message"
-                    name="message"
-                    type="text"
-                    placeholder=""
-                    aria-label="Message"
-                    aria-describedby="sendPost"
-                    v-model="sentMessage"
-                  />
-                  <button
-                    class="btn btn-outline-primary"
-                    type="submit"
-                    id="sendPost"
-                  >
-                    Создать пост
-                  </button>
-                </form>
-              </div>
-            </div>
-            <div class="row">
-              <div class="chat__wrapper" v-for="(post, index) in posts" :key="index">
-                <div class="container p-4 rounded-2 bg-info bg-opacity-10 mb-4" v-if="post.userId === userId">
-                  <p>{{ post.userId }}</p>
-                  <p>{{ post.name }}</p>
-                  <p>{{ post.message }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Profile :userName="userName" :userId="userId" :aboutMessage="aboutMessage" />
       </div>
       <div
         class="tab-pane fade"
@@ -279,6 +223,7 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import About from "@/views/About.vue";
 import Users from "@/views/Users.vue";
+import Profile from "@/views/Profile.vue";
 import News from "@/views/News.vue";
 import AboutModal from "@/components/About-modal.vue";
 import Settings from "@/views/Settings.vue";
@@ -291,6 +236,7 @@ export default defineComponent({
   components: {
     Settings,
     News,
+    Profile,
     Users,
     About,
     Header,
@@ -325,6 +271,8 @@ export default defineComponent({
       ],
       messages: [],
       posts: [],
+      userName: "",
+      aboutMessage: "",
       userId: "",
       sentMessage: "",
     };
@@ -377,8 +325,15 @@ export default defineComponent({
     },
   },
   created() {
-    emitter.on("sentMessage", (e: any) => {
+    emitter.on("sentOptions", (e: any) => {
       console.log("5555 --->", e);
+    });
+    emitter.on("setUserName", (e: any) => {
+      this.userName = e.userName;
+      this.aboutMessage = e.aboutMessage;
+    });
+    emitter.on("sentMessage", (e: any) => {
+      console.log("message", e);
     });
   },
   mounted() {

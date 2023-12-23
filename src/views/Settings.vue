@@ -34,7 +34,6 @@ import { emitter } from "../main";
 export default defineComponent({
   name: "Settings",
   props: ["settings", "language"],
-  // emits: ["setLanguage"],
   data() {
     return {
       languageModel: this.language,
@@ -42,7 +41,7 @@ export default defineComponent({
   },
   methods: {
     emitEvent() {
-      emitter.emit("sentMessage", {message: "123 --> message"});
+      emitter.emit("sentOptions", {message: "123 --> message"});
     },
   },
   mounted() {

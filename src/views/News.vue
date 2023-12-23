@@ -20,9 +20,17 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { emitter } from "../main";
 
 export default defineComponent({
   name: "News",
   props: ["langugage", "posts"],
+  data() {
+    return {
+      userName: "",
+      userId: "",
+      message: "",
+    };
+  },
 });
 </script>
