@@ -214,6 +214,9 @@
       </div>
     </div>
   </section>
+  <button class="btn btn-primary" @click="clearEvents">
+    Clear events
+  </button>
   <Footer :language="settings[0].currentLanguage.label" />
 </template>
 
@@ -323,6 +326,10 @@ export default defineComponent({
       }
       return false;
     },
+    clearEvents() {
+      // Очищаем от всех событий
+      emitter.all.clear();
+    },
   },
   created() {
     emitter.on("sentOptions", (e: any) => {
@@ -334,6 +341,10 @@ export default defineComponent({
     });
     emitter.on("sentMessage", (e: any) => {
       console.log("message", e);
+    });
+    // Прослушиваем все события
+    emitter.on("*", (e: any) => {
+      console.log("all events", e);
     });
   },
   mounted() {
