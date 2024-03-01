@@ -224,12 +224,12 @@
 import { defineComponent, ref, onMounted, onUnmounted } from "vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import About from "@/views/About.vue";
-import Users from "@/views/Users.vue";
-import Profile from "@/views/Profile.vue";
-import News from "@/views/News.vue";
+import About from "@/pages/about/About.vue";
+import Users from "@/pages/users/Users.vue";
+import Profile from "@/pages/profile/Profile.vue";
+import News from "@/pages/news/News.vue";
 import AboutModal from "@/components/About-modal.vue";
-import Settings from "@/views/Settings.vue";
+import Settings from "@/pages/settings/Settings.vue";
 import { emitter } from "./main";
 
 const ws = new WebSocket("ws://127.0.0.1:8000");

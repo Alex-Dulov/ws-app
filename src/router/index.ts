@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import About from "../views/About.vue";
-import News from "../views/News.vue";
-import Users from "../views/Users.vue";
-import Chat from "../views/Chat.vue";
-import Profile from "../views/Profile.vue";
-import Settings from "../views/Settings.vue";
+import About from "../pages/about/About.vue";
+import News from "../pages/news/News.vue";
+import Users from "../pages/users/Users.vue";
+import Chat from "../pages/chat/Chat.vue";
+import Profile from "../pages/profile/Profile.vue";
+import Settings from "../pages/settings/Settings.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {

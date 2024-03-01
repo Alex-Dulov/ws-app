@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { emitter } from "../main";
+import { emitter } from "../../main";
 
 export default defineComponent({
   name: "Settings",

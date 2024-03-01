@@ -6,7 +6,7 @@
         <div class="col-md-3">
           <img
               class="w-100 mb-4"
-              src="../assets/default-user.png"
+              src="../assets/images/default/default-user.png"
               alt="Аватар пользователя"
           />
         </div>
