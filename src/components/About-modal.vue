@@ -1,34 +1,39 @@
 <template>
   <div class="about-modal">
     <div
-        class="modal fade"
-        id="aboutModal"
-        data-bs-backdrop="static"
-        data-bs-keyboard="true"
-        tabindex="-1"
-        aria-labelledby="aboutModalLabel"
-        aria-hidden="true"
+      class="modal fade"
+      id="aboutModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="true"
+      tabindex="-1"
+      aria-labelledby="aboutModalLabel"
+      aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="aboutModalLabel">What Your name?</h5>
             <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
             ></button>
           </div>
           <div class="modal-body">
-            <input class="mb-3" type="text" placeholder="Name" v-model="v$.userName.$model" />
+            <input
+              class="mb-3"
+              type="text"
+              placeholder="Name"
+              v-model="v$.userName.$model"
+            />
             <textarea placeholder="About" v-model="v$.aboutMessage.$model" />
             <button
-                type="button"
-                class="btn btn-primary"
-                :disabled="v$.$invalid"
-                data-bs-dismiss="modal"
-                @click="setUserName"
+              type="button"
+              class="btn btn-primary"
+              :disabled="v$.$invalid"
+              data-bs-dismiss="modal"
+              @click="setUserName"
             >
               Ok
             </button>

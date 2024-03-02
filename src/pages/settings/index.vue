@@ -20,9 +20,7 @@
           </select>
         </div>
       </div>
-      <button class="button" @click="emitEvent">
-        Click
-      </button>
+      <button class="button" @click="emitEvent">Click</button>
     </div>
   </div>
 </template>
@@ -41,7 +39,7 @@ export default defineComponent({
   },
   methods: {
     emitEvent() {
-      emitter.emit("sentOptions", {message: "123 --> message"});
+      emitter.emit("sentOptions", { message: "123 --> message" });
     },
   },
   mounted() {

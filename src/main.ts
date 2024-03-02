@@ -8,6 +8,6 @@ import mitt from "mitt";
 
 export const emitter = mitt();
 const app = createApp(App).use(router);
-const store = new Vuex.Store({state: {test: "",},});
+const store = new Vuex.Store({ state: { test: "" } });
 
 app.use(store).mount("#app");

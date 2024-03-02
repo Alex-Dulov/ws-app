@@ -73,7 +73,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    console.log("mount chat component")
+    console.log("mount chat component");
   },
 });
 </script>

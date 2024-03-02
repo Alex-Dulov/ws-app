@@ -1,9 +1,6 @@
 <template>
   <Header :language="settings[0].currentLanguage.label" />
-<!--  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">
-    Launch modal
-  </button>-->
-  <AboutModal :aboutModalShow="aboutModalShow"/>
+  <AboutModal :aboutModalShow="aboutModalShow" />
   <section class="content mb-4">
     <div class="container mb-4">
       <ul class="nav nav-tabs" id="mainMenu" role="tablist">
@@ -125,7 +122,7 @@
         role="tabpanel"
         aria-labelledby="news-tab"
       >
-        <News :langugage="language" :posts="posts"/>
+        <News :langugage="language" :posts="posts" />
       </div>
       <div
         class="tab-pane fade"
@@ -202,7 +199,11 @@
         role="tabpanel"
         aria-labelledby="profile-tab"
       >
-        <Profile :userName="userName" :userId="userId" :aboutMessage="aboutMessage" />
+        <Profile
+          :userName="userName"
+          :userId="userId"
+          :aboutMessage="aboutMessage"
+        />
       </div>
       <div
         class="tab-pane fade"
@@ -210,18 +211,21 @@
         role="tabpanel"
         aria-labelledby="settings-tab"
       >
-        <Settings :settings="settings" :language="language" @setLanguage="setLanguage"/>
+        <Settings
+          :settings="settings"
+          :language="language"
+          @setLanguage="setLanguage"
+        />
       </div>
     </div>
   </section>
-  <button class="btn btn-primary" @click="clearEvents">
-    Clear events
-  </button>
+  <button class="btn btn-primary" @click="clearEvents">Clear events</button>
   <Footer :language="settings[0].currentLanguage.label" />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from "vue";
+import { defineComponent } from "vue";
+// import { defineComponent, ref, onMounted, onUnmounted } from "vue";
 import Header from "@/components/global/header/header.vue";
 import Footer from "@/components/global/footer/footer.vue";
 import About from "@/pages/about/index.vue";
