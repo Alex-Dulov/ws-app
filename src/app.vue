@@ -222,14 +222,14 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted } from "vue";
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import About from "@/pages/about/About.vue";
-import Users from "@/pages/users/Users.vue";
-import Profile from "@/pages/profile/Profile.vue";
-import News from "@/pages/news/News.vue";
+import Header from "@/components/global/header/header.vue";
+import Footer from "@/components/global/footer/footer.vue";
+import About from "@/pages/about/index.vue";
+import Users from "@/pages/users/index.vue";
+import Profile from "@/pages/profile/index.vue";
+import News from "@/pages/news/index.vue";
 import AboutModal from "@/components/About-modal.vue";
-import Settings from "@/pages/settings/Settings.vue";
+import Settings from "@/pages/settings/index.vue";
 import { emitter } from "./main";
 
 const ws = new WebSocket("ws://127.0.0.1:8000");
