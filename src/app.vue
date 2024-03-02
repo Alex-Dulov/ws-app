@@ -234,7 +234,7 @@ import Profile from "@/pages/profile/index.vue";
 import News from "@/pages/news/index.vue";
 import AboutModal from "@/components/global/auth-modal/auth-modal.vue";
 import Settings from "@/pages/settings/index.vue";
-import { emitter } from "./main";
+import { emitter } from "@/main";
 
 const ws = new WebSocket("ws://127.0.0.1:8000");
 
