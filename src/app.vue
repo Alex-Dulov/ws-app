@@ -232,7 +232,7 @@ import About from "@/pages/about/index.vue";
 import Users from "@/pages/users/index.vue";
 import Profile from "@/pages/profile/index.vue";
 import News from "@/pages/news/index.vue";
-import AboutModal from "@/components/About-modal.vue";
+import AboutModal from "@/components/global/auth-modal/auth-modal.vue";
 import Settings from "@/pages/settings/index.vue";
 import { emitter } from "./main";
 

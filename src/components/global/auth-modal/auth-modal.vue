@@ -46,7 +46,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import * as bootstrap from "bootstrap";
-import { emitter } from "../main";
+import { emitter } from "@/main";
 import { useVuelidate } from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
 
